@@ -1,13 +1,11 @@
-import Header from "../components/Header";
-import Siderbar from "../components/Siderbar";
-import Video from "../components/Video";
+import { Header, Sidebar, Video } from "../components";
 
 const EventScreen = () => (
   <>
     <Header />
     <main>
       <Video />
-      <Siderbar />
+      <Sidebar />
     </main>
   </>
 );
