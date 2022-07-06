@@ -25,7 +25,6 @@ type TGetLessonsQueryResponse = {
 
 const Siderbar = () => {
   const { data } = useQuery<TGetLessonsQueryResponse>(GET_LESSONS_QUERY);
-  console.log(data);
 
   return (
     <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600">
@@ -34,12 +33,17 @@ const Siderbar = () => {
       </span>
 
       <div className="flex flex-col gap-8">
-        <Lesson
-          title="Aula 01"
-          slug="aula-01"
-          availableAt={new Date()}
-          type="live"
-        />
+        {data?.lessons.map(({ title, slug, id, availableAt, lessonType }) => {
+          return (
+            <Lesson
+              key={id}
+              title={title}
+              slug={slug}
+              availableAt={new Date(availableAt)}
+              type={lessonType}
+            />
+          );
+        })}
       </div>
     </aside>
   );
