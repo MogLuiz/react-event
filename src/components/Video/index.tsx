@@ -13,10 +13,25 @@ const Video = () => {
             <h1 className="text-2xl font-bold">
               Aula 01 - Abertura do Ignite Lab
             </h1>
-            <p className="mt-4 text-gray-200">
+            <p className="mt-4 text-gray-200 leading-relaxed">
               Nessa aula vamos da inicio ao projeto criando a estrutura base da
               aplicaçāo.
             </p>
+
+            <div className="flex items-center gap-4 mt-6">
+              <img
+                className="h-16 w-16 rounded-full border-2 border-blue-500"
+                src="https://avatars.githubusercontent.com/u/58401291?v=4"
+                alt=""
+              />
+
+              <div className="leading-relaxed">
+                <strong className="font-bold text-2xl block">Luiz Ramos</strong>
+                <span className="text-gray-200 text-sm block">
+                  Frontend Engineer
+                </span>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">
