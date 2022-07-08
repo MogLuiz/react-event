@@ -6,6 +6,8 @@ import {
   Lightning,
 } from "phosphor-react";
 
+import '@vime/core/themes/default.css'
+
 const Video = () => {
   return (
     <div className="flex-1">
