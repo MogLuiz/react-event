@@ -6,9 +6,13 @@ import {
   Lightning,
 } from "phosphor-react";
 
-import '@vime/core/themes/default.css'
+import "@vime/core/themes/default.css";
 
-const Video = () => {
+type TVideoProps = {
+  lessonSlug: string;
+};
+
+const Video = ({ lessonSlug }: TVideoProps) => {
   return (
     <div className="flex-1">
       <div className="bg-black flex justify-center">
