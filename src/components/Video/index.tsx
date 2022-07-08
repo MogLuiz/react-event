@@ -7,12 +7,47 @@ import {
 } from "phosphor-react";
 
 import "@vime/core/themes/default.css";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_LESSON_BY_SLUG_QUERY = gql`
+  query GetLessonBySlug($slug: String) {
+    lesson(where: { slug: $slug }) {
+      title
+      id
+      teacher {
+        avatarURL
+        bio
+        name
+      }
+      description
+    }
+  }
+`;
+
+type TGetLessonBySlugQueryResponse = {
+  lesson: {
+    title: string;
+    videoId: string;
+    description: string;
+    teacher: {
+      avatarURL: string;
+      bio: string;
+      name: string;
+    };
+  };
+};
 
 type TVideoProps = {
   lessonSlug: string;
 };
 
 const Video = ({ lessonSlug }: TVideoProps) => {
+  const { data } = useQuery<TGetLessonBySlugQueryResponse>(GET_LESSON_BY_SLUG_QUERY, {
+    variables: {
+      slug: lessonSlug,
+    },
+  });
+
   return (
     <div className="flex-1">
       <div className="bg-black flex justify-center">
