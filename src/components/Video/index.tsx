@@ -6,6 +6,8 @@ import {
   Lightning,
 } from "phosphor-react";
 
+import { TGetLessonBySlugQueryResponse } from "./types"
+
 import "@vime/core/themes/default.css";
 import { gql, useQuery } from "@apollo/client";
 
@@ -24,29 +26,23 @@ const GET_LESSON_BY_SLUG_QUERY = gql`
   }
 `;
 
-type TGetLessonBySlugQueryResponse = {
-  lesson: {
-    title: string;
-    videoId: string;
-    description: string;
-    teacher: {
-      avatarURL: string;
-      bio: string;
-      name: string;
-    };
-  };
-};
+
 
 type TVideoProps = {
   lessonSlug: string;
 };
 
 const Video = ({ lessonSlug }: TVideoProps) => {
-  const { data } = useQuery<TGetLessonBySlugQueryResponse>(GET_LESSON_BY_SLUG_QUERY, {
-    variables: {
-      slug: lessonSlug,
-    },
-  });
+  const { data } = useQuery<TGetLessonBySlugQueryResponse>(
+    GET_LESSON_BY_SLUG_QUERY,
+    {
+      variables: {
+        slug: lessonSlug,
+      },
+    }
+  );
+
+  if (!data) return <div className="flex-1">Carregando</div>;
 
   return (
     <div className="flex-1">
