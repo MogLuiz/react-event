@@ -6,27 +6,12 @@ import {
   Lightning,
 } from "phosphor-react";
 
-import { TGetLessonBySlugQueryResponse } from "./types"
+import { TGetLessonBySlugQueryResponse } from "./types";
+
+import { GET_LESSON_BY_SLUG_QUERY } from "./utils"
 
 import "@vime/core/themes/default.css";
-import { gql, useQuery } from "@apollo/client";
-
-const GET_LESSON_BY_SLUG_QUERY = gql`
-  query GetLessonBySlug($slug: String) {
-    lesson(where: { slug: $slug }) {
-      title
-      id
-      teacher {
-        avatarURL
-        bio
-        name
-      }
-      description
-    }
-  }
-`;
-
-
+import { useQuery } from "@apollo/client";
 
 type TVideoProps = {
   lessonSlug: string;
